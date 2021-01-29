@@ -3,21 +3,66 @@
    <head> 
       <meta charset="utf-8"> 
       <title>Titre de la page</title> 
+      <style>
+         lis{
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+            border: 1px solid black;
+            ;
+         }
+      </style>
+
    </head> 
    <body> 
-       <header>
-           <img src="logo.png">
-           <nav style="display: flex;flex-direction row; border: 1px solid, black;">
-            <a href="https://www.leboncoin.fr/">Acceuil</a>
-            <a href=" ">A propos</a>
-            <a href=" ">Inscription</a>
-            <a href=" ">Connexion</a>
-            <a href=" ">Avis</a>
-            <a href=" ">Contact</a>
+       <header style="display: flex;flex-direction: row;">
+           <img src="logo.png"style="border: 1px solid black;">
+            
+           <nav style="margin-left: 100px;">
+             <ul style="display: flex;flex-direction: row; border: 1px solid black;">
+               <lis><a href="https://www.leboncoin.fr/">Acceuil </a></li>
+               <lis><a href=" ">A propos </a></lis>
+               <lis><a href=" ">Inscription </a></lis>
+               <lis><a href=" ">Connexion </a></lis>
+               <lis><a href=" ">Avis </a></lis>
+               <lis><a href=" ">Contact </a> </lis>
+            </ul> 
            </nav>
+
        </header>
        <main>
-
-       </main>
+        
+        <section style="display: flex;flex-direction: row;"> 
+         <div>
+            <h1>Vendez vos articles !</h1>
+            <p>
+            Nullam auctor faucibus nisl ut consectetur. Nulla non magna ut ligula interdum varius et semper leo. Aenean vel massa quis erat auctor malesuada.<br/>
+            Quisque non augue sed quam venenatis feugiat at in massa. Duis mi velit, placerat sed varius vel, eleifend eu ex.<br/>
+            Aliquam dapibus varius metus, quis ullamcorper ipsum dapibus eu. Mauris hendrerit sagittis dolor, ac accumsan sapien aliquam sit amet.<br/>
+            Proin vestibulum nibh nec sem ultrices finibus. In sagittis, ipsum id pulvinar venenatis, orci nulla dictum diam, vitae scelerisque odio diam eu arcu.<br/>
+            Aliquam nisl ante, sagittis in maximus id, rutrum in odio.
+            </p>
+            <h2>Achetez des articles ! </h2>
+            <p>
+            In et commodo leo. Sed sit amet tristique urna. Sed rutrum posuere risus, vel euismod erat imperdiet vitae. Fusce id auctor dui.<br/>
+            Nunc tincidunt tincidunt ultricies. Nam bibendum diam in libero semper, sit amet volutpat mauris auctor.<br/>
+            Nulla fermentum sem scelerisque, consequat justo quis, elementum nulla. Quisque in magna id odio posuere sagittis.
+            </p>
+         </div>
+         <img src="carte.png" style="border: 1px solid black;">
+      </section>
+      <section style="display: flex;flex-direction: row;"> 
+         <div>
+            <ul>
+               <li>ps4</li>
+               <li>voiture</li>
+               <li>moto</li>
+               <li>télé</li>
+               <li>canapé</li>
+            </ul>
+         </div>
+         <img src="logo.png" style="border: 1px solid black;">
+      </section> 
+       </main> 
    </body> 
 </html> 
