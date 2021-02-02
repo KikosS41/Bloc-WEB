@@ -1,0 +1,42 @@
+.titre {
+
+    background-color: rgb(163, 223, 22);
+    color: rgb(117, 72, 5);
+    text-align: right;
+    
+}
+h1 {
+    margin-top: 0;
+}
+p {
+    margin-bottom: 0 ;
+}
+.lien {
+    background-color: rgb(71, 52, 148);
+    text-align: left;
+}
+.lien a {
+    color: rgb(243, 16, 35);
+}
+
+body {
+    background-color: rgb(218, 215, 228);
+    color: rgb(117, 72, 5);
+    margin: 0;
+}
+
+input {
+    background-color: rgb(236, 152, 194);
+    color: rgb(2, 143, 2);
+}
+
+select {
+    background-color: rgb(236, 152, 194);
+    color: rgb(2, 143, 2);
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}

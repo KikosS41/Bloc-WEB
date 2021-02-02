@@ -2,20 +2,90 @@
 <html lang="fr"> 
    <head> 
       <meta charset="utf-8"> 
-      <title>A propos</title> 
-      <link rel="stylesheet" href="style.css">
+      <title>Facture</title> 
+      <link rel="stylesheet" type="text/css" href="style.css">
    </head>
-
    <body>
-        <div>
-           <h1>Facture</h1>
-           <p>Bienvenue chez nous</p>
-           <a href="">Link</a>
-           <a href="">Link</a>
-           <a href="">Link</a>
-        </div>
-        <div>
+
+      <header>
+         <div class="titre">
+            <h1>Facture</h1>
+            <p>Bienvenue chez Nous.</p>
+         </div>
+         <div class="lien">
+            <a href="">Link</a>
+            <a href="">Link</a>
+            <a href="">Link</a>
+         </div>
+      </header>
+        <section class="container">
+        <div class="four">
            <h2>Fournisseur</h2>
-        </div>
+           <fieldset>
+              <legend>Fournisseur : ?</legend>
+              <select name="fournisseur 1">
+               <option value="">--Veuillez choisir une option--</option>
+                 <option value="google">Google</option>
+                 <option value="amazon">Amazon</option>
+                 <option value="facebook">Facebook</option>
+              </select>
+           </fieldset>
+         </div>
+        <div class="form">
+           <h2>Formulaire</h2>
+           <fieldset>
+               <legend>Information : ?</legend>
+               <input type="radio" id="Home" name="style">
+               <label for="Home">Personnel</label>
+
+               <input type="radio" id="Work" name="style">
+               <label for="Work">Professionel</label></br></br>
+
+
+               <label for="TVA">N°TVA</label></br>
+               <input type="text" id="tva" name="TVA" title="13 caractères en majuscules" required pattern="[A-Z0-9]{13}"></br></br>
+            
+               <label for="Prenom">Prénom</label></br>
+               <input type="text" id="prenom" name="Prenom" required pattern="[A-Za-z.-]{2,40}"></br></br>
+
+               <label for="Nom">Nom</label></br>
+               <input type="text" id="nom" name="Nom" required pattern="[A-Za-z]{2,}"></br></br>
+
+               <label for="Male">Male</label>
+               <input type="radio" id="Male" name="Genre"></br>
+            
+               <label for="Female">Female</label>
+               <input type="radio" id="Female" name="Genre"></br>
+
+               <label for="Other">Other</label>
+               <input type="radio" id="Other" name="Genre"></br></br>
+
+
+               <label for="Email">Email</label></br>
+               <input type="text" id="email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></br></br>
+
+               <label for="Telephone">N°Téléphone</label></br>
+               <input type="number" id="tel" name="Telephone" title="10 numéros" required pattern="[0-9]{10}"></br></br>
+
+               <label for="Adresse">Adresse</label></br>
+               <input type="text" id="addr" name="Adresse"></br></br>
+
+               <label for="Region">Région</label></br>
+               <input type="text" id="region" name="Region"></br></br>
+
+               <label for="Ville">Ville</label></br>
+               <input type="text" id="ville" name="Ville"></br></br>
+
+               <label for="Code_Postale">Code Postale</label></br>
+               <input type="text" id="cp" name="Code_Postale"></br></br>
+
+               <label for="Carte_Bancaire">Carte de payment</label></br>
+               <input type="text" id="CB" name="Carte_Bancaire" title="16 nombres" required pattern="[0-9]{16}"></br></br>
+
+               <input type="submit" value="Valider">
+               <input type="reset" value="Réinitialiser">
+         </fieldset>
+      </div>
+   </section>
    </body>
 </html>
