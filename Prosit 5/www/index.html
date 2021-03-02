@@ -1,0 +1,124 @@
+<!doctype html> 
+<html lang="fr"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <title>cesi</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/vendors/fontawesome/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+    </head> 
+
+    <body>
+        <header>
+
+        </header>
+
+
+        <main>
+            <div class="container">
+                <form  class="needs-validation" novalidate>
+                    <div class="row">
+                        <label class="col-6">NOM :</label>
+                        <input type="text" id="nom" class="col-6" required>
+                        <div class="valid-feedback">Ok !</div>
+                        <div class="invalid-feedback">Valeur incorrecte</div>
+                    </div>
+                    <div class="row">
+                        <label class="col-6">PRENOM :</label>
+                        <input type="text" id="prenom" class="col-6" required>
+                        <div class="valid-feedback">Ok !</div>
+                        <div class="invalid-feedback">Valeur incorrecte</div>
+                    </div>
+                    <div class="row">
+                        <label class="col-6">ADRESSE :</label>
+                        <input type="text" id="user_input_autocomplete_address" class="col-6" required>
+                        <div class="valid-feedback">Ok !</div>
+                        <div class="invalid-feedback">Valeur incorrecte</div>
+                    </div>
+                    <div class="row">
+                        <label class="col-6">CODE POSTAL :</label>
+                        <input type="text" id="postal_code" class="col-6" required>
+                        <div class="valid-feedback">Ok !</div>
+                        <div class="invalid-feedback">Valeur incorrecte</div>
+                    </div>
+                    <div class="row">
+                        <label class="col-6">VILLE :</label>
+                        <input type="text" id="locality" class="col-6" required>
+                        <div class="valid-feedback">Ok !</div>
+                        <div class="invalid-feedback">Valeur incorrecte</div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <input type="submit" value="Envoyer">
+                    </div>
+                </form>
+            </div>
+        </main>
+
+
+        <footer>
+
+        </footer>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyD2utfC28U-lYSsAoh_9REELwSLgoIBuTc" type="text/javascript"></script>
+
+        <script>
+            /*La fonction principale de ce script est d'empêcher l'envoi du formulaire si un champ a été mal rempli
+            *et d'appliquer les styles de validation aux différents éléments de formulaire*/
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    let forms = document.getElementsByClassName('needs-validation');
+                    let validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+
+        <script type="text/javascript">
+            // Lie le champs adresse en champs autocomplete afin que l'API puisse afficher les propositions d'adresses
+        
+            function initializeAutocomplete(id) {
+                var element = document.getElementById(id);
+                if (element) {
+                    var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+                    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+                }
+            }
+
+            // Injecte les données dans les champs du formulaire lorsqu'une adresse est sélectionnée
+            function onPlaceChanged() {
+                var place = this.getPlace();
+
+                for (var i in place.address_components) {
+                    var component = place.address_components[i];
+                    for (var j in component.types) {
+                        var type_element = document.getElementById(component.types[j]);
+                        if (type_element) {
+                            type_element.value = component.long_name;
+                        }
+                    }
+                }
+
+                var longitude = document.getElementById("longitude");
+                var latitude = document.getElementById("latitude");
+                longitude.value = place.geometry.location.lng();
+                latitude.value = place.geometry.location.lat();
+            }
+
+            // Initialisation du champs autocomplete
+            google.maps.event.addDomListener(window, 'load', function () {
+                initializeAutocomplete('user_input_autocomplete_address');
+            });
+        </script>
+    </body>
+</html>
