@@ -1,0 +1,83 @@
+<!doctype html> 
+<html lang="fr"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <title>cesi</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    </head> 
+
+    <body>
+        <article>
+            <h2>Partie 1 - Affichage des utilisateurs (JavaScript natif)</h2>
+            <div id="js_result"></div>
+            <div><button id="btn_js">GET Data</button></div>
+            </article>
+            <article>
+            <h2>Partie 2 - Création d'un utilisateur (jQuery)</h2>
+            <div id="jquery_result"></div>
+            <div><button id="btn_jquery">POST data</button></div>
+            </article>
+            
+            <script>
+                function get_users(xhr)
+                {
+                    var result= "";
+                    var message = JSON.parse(xhr.responseText);
+                    for (let i = 0; i < 5; i++) {
+                        var prenom = message.data[i].first_name;
+                        var nom = message.data[i].last_name;
+                        var img = "<img src=\"" + message.data[i].avatar + "\">" ;
+                        result += prenom + " " + nom + img + "</br>";
+                    }
+                    return result;
+                }
+
+
+                document.getElementById("btn_js").onclick = function() // Interception du click sur le bouton
+                {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "https://reqres.in/api/users", true);
+                    xhr.onload = function()
+                        {
+                            var html = "" ;
+                            if( xhr.status == 200 )
+                            {
+                                html = get_users(xhr);
+                            }
+                            else{}
+                    document.getElementById("js_result").innerHTML = html;
+                    };
+                    xhr.send(); //Envoi de la requête au serveur (asynchrone par défaut)
+                }; 
+
+                $("#btn_jquery" ).click(function()
+                    {
+                        $.ajax
+                        ({
+                            url: "https://reqres.in/api/users/",
+                            type: "POST",
+                            dataType: "JSON",
+                            data: {name: "Killian", job: "kebabier", place: "Olivet"},
+                            success: function(response, textStatus, xhr)
+                            {
+                                var html = '';
+                                if( xhr.status == 201 )
+                                {
+                                    html = "succès";
+                                }
+                                else
+                                {
+                                    html = "échec";
+                                }
+                                $('#jquery_result').html(html);
+                            },
+                            error: function (xhr, ajaxOptions, thrownError)
+                            {
+                                $('#jquery_result').html('Error: ' + xhr.status);
+                                console.log(thrownError);
+                            }
+                        });
+                    });
+            </script>
+    </body>
+</html>
